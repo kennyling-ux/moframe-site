@@ -4,7 +4,7 @@ import { motion } from "framer-motion";
 import { ArrowRight, CheckCircle, Star } from "lucide-react";
 
 const WA_URL =
-  "https://wa.me/60123456789?text=Hi%20MoFrame%2C%20I%27m%20interested%20in%20getting%20a%20free%20website%20for%20my%20business.";
+  "https://wa.me/message/OMRIJWN3SVAKM1";
 
 const trust = [
   "No setup fee",

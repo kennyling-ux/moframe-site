@@ -64,7 +64,7 @@ export default function Navbar() {
             </button>
           ))}
           <a
-            href="https://wa.me/60123456789?text=Hi%20MoFrame%2C%20I%27m%20interested%20in%20getting%20a%20free%20website%20for%20my%20business."
+            href="https://wa.me/message/OMRIJWN3SVAKM1"
             target="_blank"
             rel="noopener noreferrer"
             className="px-4 py-2 rounded-lg text-sm font-semibold text-white transition-all duration-200 hover:scale-[1.02] hover:shadow-md active:scale-[0.98]"
@@ -105,7 +105,7 @@ export default function Navbar() {
                 </button>
               ))}
               <a
-                href="https://wa.me/60123456789?text=Hi%20MoFrame%2C%20I%27m%20interested%20in%20getting%20a%20free%20website%20for%20my%20business."
+                href="https://wa.me/message/OMRIJWN3SVAKM1"
                 target="_blank"
                 rel="noopener noreferrer"
                 className="mt-2 px-4 py-3 rounded-lg text-sm font-semibold text-white text-center"

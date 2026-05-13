@@ -4,7 +4,7 @@ import { motion, AnimatePresence } from "framer-motion";
 import { useState, useEffect } from "react";
 
 const WA_URL =
-  "https://wa.me/60123456789?text=Hi%20MoFrame%2C%20I%27d%20like%20to%20know%20more%20about%20getting%20a%20free%20website%20for%20my%20business.";
+  "https://wa.me/message/OMRIJWN3SVAKM1";
 
 export default function WhatsAppButton() {
   const [visible, setVisible] = useState(false);

@@ -5,7 +5,7 @@ import { useRef, useState } from "react";
 import { ArrowRight, CheckCircle, Send, Loader2 } from "lucide-react";
 
 const WA_URL =
-  "https://wa.me/60123456789?text=Hi%20MoFrame%2C%20I%27d%20like%20to%20get%20started%20with%20a%20free%20website%20for%20my%20business.";
+  "https://wa.me/message/OMRIJWN3SVAKM1";
 
 export default function CTAFooter() {
   const ref = useRef<HTMLElement>(null);

@@ -5,8 +5,8 @@ import type { Variants } from "framer-motion";
 import { useRef } from "react";
 import { Check, Zap, ArrowRight, Star } from "lucide-react";
 
-const WA_URL = (plan: string) =>
-  `https://wa.me/60123456789?text=Hi%20MoFrame%2C%20I%27m%20interested%20in%20the%20${encodeURIComponent(plan)}%20plan.`;
+const WA_URL = (_plan: string) =>
+  `https://wa.me/message/OMRIJWN3SVAKM1`;
 
 const plans = [
   {
