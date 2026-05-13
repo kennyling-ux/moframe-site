@@ -7,8 +7,11 @@
 @theme inline {
   --color-background: var(--background);
   --color-foreground: var(--foreground);
-  --font-sans: "Geist", "Geist Fallback", ui-sans-serif, system-ui, sans-serif;
-  --font-mono: "Geist Mono", "Geist Mono Fallback", ui-monospace, monospace;
+
+  /* Satoshi — loaded via Bunny Fonts in layout.tsx head */
+  --font-sans: "Satoshi", ui-sans-serif, system-ui, sans-serif;
+  --font-mono: ui-monospace, monospace;
+
   --color-sidebar-ring: var(--sidebar-ring);
   --color-sidebar-border: var(--sidebar-border);
   --color-sidebar-accent-foreground: var(--sidebar-accent-foreground);
@@ -40,60 +43,54 @@
   --radius-2xl: calc(var(--radius) * 1.8);
   --radius-3xl: calc(var(--radius) * 2.2);
 
-  /* Brand colors */
+  /* Brand tokens */
   --color-brand: var(--brand);
-  --color-brand-foreground: var(--brand-foreground);
-  --color-cta: var(--cta);
-  --color-cta-foreground: var(--cta-foreground);
-  --color-cta-hover: var(--cta-hover);
-  --color-surface: var(--surface);
-  --color-surface-2: var(--surface-2);
+  --color-brand-dark: var(--brand-dark);
+  --color-cream: var(--cream);
 }
 
 :root {
-  --background: oklch(0.99 0 0);
-  --foreground: oklch(0.13 0.02 264);
-  --card: oklch(1 0 0);
-  --card-foreground: oklch(0.13 0.02 264);
-  --popover: oklch(1 0 0);
-  --popover-foreground: oklch(0.13 0.02 264);
+  /* Backgrounds */
+  --background: #ffffff;
+  --foreground: #212121;
 
-  /* Brand blue — confident, professional */
-  --primary: oklch(0.48 0.22 264);
-  --primary-foreground: oklch(1 0 0);
+  /* Surfaces */
+  --card: #ffffff;
+  --card-foreground: #212121;
+  --popover: #ffffff;
+  --popover-foreground: #212121;
 
-  /* Brand teal accent */
-  --brand: oklch(0.52 0.17 196);
-  --brand-foreground: oklch(1 0 0);
+  /* Brand — MoFrame red */
+  --primary: #EE2234;
+  --primary-foreground: #ffffff;
+  --brand: #EE2234;
+  --brand-dark: #781F21;
 
-  /* CTA orange */
-  --cta: oklch(0.70 0.19 45);
-  --cta-foreground: oklch(1 0 0);
-  --cta-hover: oklch(0.64 0.20 45);
+  /* Cream — warm off-white from brand palette */
+  --cream: #E9E0D3;
 
-  --secondary: oklch(0.96 0.005 264);
-  --secondary-foreground: oklch(0.25 0.04 264);
-  --muted: oklch(0.96 0.003 264);
-  --muted-foreground: oklch(0.52 0.03 264);
-  --accent: oklch(0.95 0.01 196);
-  --accent-foreground: oklch(0.25 0.05 196);
-  --destructive: oklch(0.577 0.245 27.325);
-  --border: oklch(0.91 0.005 264);
-  --input: oklch(0.91 0.005 264);
-  --ring: oklch(0.48 0.22 264);
+  /* Neutrals */
+  --secondary: #f5f2ef;
+  --secondary-foreground: #212121;
+  --muted: #f5f2ef;
+  --muted-foreground: #787878;
+  --accent: #f9f6f3;
+  --accent-foreground: #212121;
+
+  --destructive: #EE2234;
+  --border: #e5e0da;
+  --input: #e5e0da;
+  --ring: #EE2234;
   --radius: 0.75rem;
 
-  --surface: oklch(0.97 0.005 264);
-  --surface-2: oklch(0.94 0.008 264);
-
-  --sidebar: oklch(0.985 0 0);
-  --sidebar-foreground: oklch(0.13 0.02 264);
-  --sidebar-primary: oklch(0.48 0.22 264);
-  --sidebar-primary-foreground: oklch(1 0 0);
-  --sidebar-accent: oklch(0.96 0.005 264);
-  --sidebar-accent-foreground: oklch(0.25 0.04 264);
-  --sidebar-border: oklch(0.91 0.005 264);
-  --sidebar-ring: oklch(0.48 0.22 264);
+  --sidebar: #f9f6f3;
+  --sidebar-foreground: #212121;
+  --sidebar-primary: #EE2234;
+  --sidebar-primary-foreground: #ffffff;
+  --sidebar-accent: #f5f2ef;
+  --sidebar-accent-foreground: #212121;
+  --sidebar-border: #e5e0da;
+  --sidebar-ring: #EE2234;
 }
 
 @layer base {
@@ -102,9 +99,16 @@
   }
   body {
     @apply bg-background text-foreground;
+    font-family: "Satoshi", ui-sans-serif, system-ui, sans-serif;
+    letter-spacing: -0.01em;
   }
   html {
-    @apply font-sans scroll-smooth;
+    @apply scroll-smooth;
+  }
+  h1, h2, h3, h4, h5, h6 {
+    font-family: "Satoshi", ui-sans-serif, system-ui, sans-serif;
+    font-weight: 700;
+    letter-spacing: -0.02em;
   }
 }
 
@@ -112,13 +116,22 @@
   .text-balance {
     text-wrap: balance;
   }
+  /* Brand red gradient */
   .gradient-brand {
-    background: linear-gradient(135deg, oklch(0.48 0.22 264), oklch(0.52 0.17 196));
+    background: linear-gradient(135deg, #EE2234, #781F21);
   }
+  /* Gradient text in brand red */
   .gradient-text {
-    background: linear-gradient(135deg, oklch(0.45 0.22 264), oklch(0.50 0.17 196));
+    background: linear-gradient(135deg, #EE2234, #912428);
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
     background-clip: text;
+  }
+  /* Cream section background */
+  .bg-cream {
+    background-color: #E9E0D3;
+  }
+  .bg-cream-subtle {
+    background-color: #f5f2ef;
   }
 }

@@ -3,6 +3,7 @@
 import { useState, useEffect } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import { Menu, X } from "lucide-react";
+import Image from "next/image";
 
 const navLinks = [
   { label: "How It Works", href: "#how-it-works" },
@@ -10,6 +11,8 @@ const navLinks = [
   { label: "What You Get", href: "#what-you-get" },
   { label: "FAQ", href: "#faq" },
 ];
+
+const WA_URL = "https://wa.me/message/OMRIJWN3SVAKM1";
 
 export default function Navbar() {
   const [scrolled, setScrolled] = useState(false);
@@ -33,7 +36,7 @@ export default function Navbar() {
       transition={{ duration: 0.6, ease: "easeOut" }}
       className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${
         scrolled
-          ? "bg-white/90 backdrop-blur-md border-b border-border shadow-sm"
+          ? "bg-white/95 backdrop-blur-md border-b border-[#e5e0da] shadow-sm"
           : "bg-transparent"
       }`}
     >
@@ -41,14 +44,19 @@ export default function Navbar() {
         {/* Logo */}
         <a
           href="#"
-          className="flex items-center gap-2 group"
+          className="flex items-center gap-2.5"
           onClick={(e) => { e.preventDefault(); window.scrollTo({ top: 0, behavior: "smooth" }); }}
         >
-          <div className="w-8 h-8 rounded-lg gradient-brand flex items-center justify-center">
-            <span className="text-white font-bold text-sm">M</span>
-          </div>
-          <span className="font-semibold text-lg text-foreground tracking-tight">
-            Mo<span className="text-[oklch(0.48_0.22_264)]">Frame</span>
+          <Image
+            src="/logo.svg"
+            alt="MoFrame logo"
+            width={48}
+            height={23}
+            className="h-7 w-auto"
+            priority
+          />
+          <span className="font-bold text-lg text-[#212121] tracking-tight">
+            Mo<span className="text-[#EE2234]">Frame</span>
           </span>
         </a>
 
@@ -58,17 +66,16 @@ export default function Navbar() {
             <button
               key={link.href}
               onClick={() => handleNav(link.href)}
-              className="text-sm text-muted-foreground hover:text-foreground transition-colors duration-200 cursor-pointer"
+              className="text-sm font-medium text-[#787878] hover:text-[#212121] transition-colors duration-200 cursor-pointer"
             >
               {link.label}
             </button>
           ))}
           <a
-            href="https://wa.me/message/OMRIJWN3SVAKM1"
+            href={WA_URL}
             target="_blank"
             rel="noopener noreferrer"
-            className="px-4 py-2 rounded-lg text-sm font-semibold text-white transition-all duration-200 hover:scale-[1.02] hover:shadow-md active:scale-[0.98]"
-            style={{ background: "oklch(0.70 0.19 45)" }}
+            className="px-5 py-2.5 rounded-lg text-sm font-bold text-white bg-[#EE2234] hover:bg-[#781F21] hover:scale-[1.02] hover:shadow-md active:scale-[0.98] transition-all duration-200"
           >
             Get Started Free
           </a>
@@ -76,11 +83,11 @@ export default function Navbar() {
 
         {/* Mobile menu button */}
         <button
-          className="md:hidden p-2 rounded-lg hover:bg-muted transition-colors"
+          className="md:hidden p-2 rounded-lg hover:bg-[#f5f2ef] transition-colors"
           onClick={() => setOpen(!open)}
           aria-label="Toggle menu"
         >
-          {open ? <X className="w-5 h-5" /> : <Menu className="w-5 h-5" />}
+          {open ? <X className="w-5 h-5 text-[#212121]" /> : <Menu className="w-5 h-5 text-[#212121]" />}
         </button>
       </div>
 
@@ -92,24 +99,23 @@ export default function Navbar() {
             animate={{ opacity: 1, height: "auto" }}
             exit={{ opacity: 0, height: 0 }}
             transition={{ duration: 0.2 }}
-            className="md:hidden bg-white border-b border-border overflow-hidden"
+            className="md:hidden bg-white border-b border-[#e5e0da] overflow-hidden"
           >
             <div className="px-4 py-4 flex flex-col gap-3">
               {navLinks.map((link) => (
                 <button
                   key={link.href}
                   onClick={() => handleNav(link.href)}
-                  className="text-left text-sm text-muted-foreground hover:text-foreground py-2 transition-colors"
+                  className="text-left text-sm font-medium text-[#787878] hover:text-[#212121] py-2 transition-colors"
                 >
                   {link.label}
                 </button>
               ))}
               <a
-                href="https://wa.me/message/OMRIJWN3SVAKM1"
+                href={WA_URL}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="mt-2 px-4 py-3 rounded-lg text-sm font-semibold text-white text-center"
-                style={{ background: "oklch(0.70 0.19 45)" }}
+                className="mt-2 px-4 py-3 rounded-lg text-sm font-bold text-white text-center bg-[#EE2234] hover:bg-[#781F21] transition-colors"
               >
                 Get Started Free
               </a>

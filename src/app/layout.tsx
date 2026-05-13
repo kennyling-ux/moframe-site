@@ -1,18 +1,5 @@
 import type { Metadata } from "next";
-import { Geist, Geist_Mono } from "next/font/google";
 import "./globals.css";
-
-const geistSans = Geist({
-  variable: "--font-geist-sans",
-  subsets: ["latin"],
-  display: "swap",
-});
-
-const geistMono = Geist_Mono({
-  variable: "--font-geist-mono",
-  subsets: ["latin"],
-  display: "swap",
-});
 
 const siteUrl = "https://mo-frame.com";
 const siteName = "MoFrame";
@@ -92,20 +79,14 @@ export default function RootLayout({
         "@id": `${siteUrl}/#organization`,
         name: siteName,
         url: siteUrl,
-        logo: {
-          "@type": "ImageObject",
-          url: `${siteUrl}/logo.png`,
-        },
+        logo: { "@type": "ImageObject", url: `${siteUrl}/logo.svg` },
         contactPoint: {
           "@type": "ContactPoint",
           contactType: "customer service",
           availableLanguage: ["English", "Malay"],
           areaServed: "MY",
         },
-        areaServed: {
-          "@type": "Country",
-          name: "Malaysia",
-        },
+        areaServed: { "@type": "Country", name: "Malaysia" },
       },
       {
         "@type": "WebSite",
@@ -172,11 +153,14 @@ export default function RootLayout({
   };
 
   return (
-    <html
-      lang="en-MY"
-      className={`${geistSans.variable} ${geistMono.variable} h-full antialiased`}
-    >
+    <html lang="en-MY" className="h-full antialiased">
       <head>
+        {/* Satoshi via Bunny Fonts — self-hosted CDN, GDPR-friendly */}
+        <link rel="preconnect" href="https://fonts.bunny.net" />
+        <link
+          href="https://fonts.bunny.net/css?family=satoshi:400,500,700&display=swap"
+          rel="stylesheet"
+        />
         <script
           type="application/ld+json"
           dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}

@@ -57,14 +57,14 @@ export default function FAQ() {
           transition={{ duration: 0.6 }}
           className="text-center mb-14"
         >
-          <span className="inline-block px-3 py-1 rounded-full text-xs font-semibold uppercase tracking-widest bg-[oklch(0.94_0.05_264)] text-[oklch(0.40_0.18_264)] border border-[oklch(0.85_0.08_264)] mb-4">
+          <span className="inline-block px-3 py-1 rounded-full text-xs font-bold uppercase tracking-widest bg-red-50 text-[#EE2234] border border-red-100 mb-4">
             FAQ
           </span>
-          <h2 className="text-3xl sm:text-4xl md:text-5xl font-bold tracking-tight text-balance">
+          <h2 className="text-3xl sm:text-4xl md:text-5xl font-bold tracking-tight text-balance text-[#212121]">
             Questions We Get{" "}
             <span className="gradient-text">All the Time</span>
           </h2>
-          <p className="mt-4 text-lg text-muted-foreground">
+          <p className="mt-4 text-lg text-[#787878]">
             Still not sure? Chat with us on WhatsApp — we reply within minutes.
           </p>
         </motion.div>
@@ -79,12 +79,12 @@ export default function FAQ() {
               <AccordionItem
                 key={i}
                 value={`item-${i}`}
-                className="border border-border rounded-xl bg-white px-2 overflow-hidden data-[state=open]:shadow-sm transition-shadow"
+                className="border border-[#e5e0da] rounded-xl bg-white px-2 overflow-hidden data-[state=open]:shadow-sm data-[state=open]:border-[#EE2234]/30 transition-all"
               >
-                <AccordionTrigger className="px-4 py-4 text-left font-semibold text-foreground hover:no-underline hover:text-[oklch(0.48_0.22_264)] transition-colors text-sm sm:text-base">
+                <AccordionTrigger className="px-4 py-4 text-left font-bold text-[#212121] hover:no-underline hover:text-[#EE2234] transition-colors text-sm sm:text-base">
                   {faq.q}
                 </AccordionTrigger>
-                <AccordionContent className="px-4 pb-4 text-muted-foreground text-sm leading-relaxed">
+                <AccordionContent className="px-4 pb-4 text-[#787878] text-sm leading-relaxed">
                   {faq.a}
                 </AccordionContent>
               </AccordionItem>

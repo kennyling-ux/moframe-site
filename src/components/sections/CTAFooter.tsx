@@ -4,8 +4,7 @@ import { motion, useInView } from "framer-motion";
 import { useRef, useState } from "react";
 import { ArrowRight, CheckCircle, Send, Loader2 } from "lucide-react";
 
-const WA_URL =
-  "https://wa.me/message/OMRIJWN3SVAKM1";
+const WA_URL = "https://wa.me/message/OMRIJWN3SVAKM1";
 
 export default function CTAFooter() {
   const ref = useRef<HTMLElement>(null);
@@ -16,21 +15,22 @@ export default function CTAFooter() {
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     setStatus("loading");
-    // Simulate form submission — replace with real endpoint (Tally/Formspree/API)
+    // Replace with real endpoint (Tally/Formspree/API route)
     await new Promise((r) => setTimeout(r, 1200));
     setStatus("success");
   };
 
   return (
-    <section ref={ref} className="py-24 px-4 sm:px-6 bg-[oklch(0.13_0.02_264)] text-white overflow-hidden relative">
-      {/* Background glow */}
+    <section ref={ref} className="py-24 px-4 sm:px-6 bg-[#212121] text-white overflow-hidden relative">
+      {/* Brand red glow */}
       <div
         className="absolute inset-0 -z-0 pointer-events-none"
         style={{
-          background:
-            "radial-gradient(ellipse 70% 50% at 50% 100%, oklch(0.48 0.22 264 / 0.3), transparent)",
+          background: "radial-gradient(ellipse 70% 50% at 50% 100%, rgba(238,34,52,0.15), transparent)",
         }}
       />
+      {/* Cream texture top accent */}
+      <div className="absolute top-0 left-0 right-0 h-px bg-gradient-to-r from-transparent via-[#EE2234]/40 to-transparent" />
 
       <div className="relative max-w-5xl mx-auto">
         <motion.div
@@ -41,16 +41,9 @@ export default function CTAFooter() {
         >
           <h2 className="text-3xl sm:text-4xl md:text-5xl font-bold tracking-tight text-balance">
             Ready to Get{" "}
-            <span style={{
-              background: "linear-gradient(135deg, oklch(0.75 0.15 264), oklch(0.78 0.14 196))",
-              WebkitBackgroundClip: "text",
-              WebkitTextFillColor: "transparent",
-              backgroundClip: "text",
-            }}>
-              Found Online?
-            </span>
+            <span className="gradient-text">Found Online?</span>
           </h2>
-          <p className="mt-4 text-lg text-white/70 max-w-xl mx-auto">
+          <p className="mt-4 text-lg text-white/60 max-w-xl mx-auto">
             No commitment to start the conversation. We&apos;ll show you exactly how we&apos;d grow your business online.
           </p>
         </motion.div>
@@ -78,12 +71,8 @@ export default function CTAFooter() {
             </a>
 
             <div className="space-y-3">
-              {[
-                "We reply within minutes",
-                "Free 30-minute strategy call",
-                "No hard sell, just honest advice",
-              ].map((p) => (
-                <div key={p} className="flex items-center gap-3 text-white/80 text-sm">
+              {["We reply within minutes", "Free 30-minute strategy call", "No hard sell, just honest advice"].map((p) => (
+                <div key={p} className="flex items-center gap-3 text-white/70 text-sm">
                   <CheckCircle className="w-4 h-4 text-emerald-400 shrink-0" />
                   {p}
                 </div>
@@ -104,73 +93,38 @@ export default function CTAFooter() {
                   <CheckCircle className="w-8 h-8 text-emerald-400" />
                 </div>
                 <h3 className="text-xl font-bold text-white">We&apos;ll be in touch!</h3>
-                <p className="text-white/60 text-sm">
-                  Expect a WhatsApp message from us within the next few hours.
-                </p>
+                <p className="text-white/50 text-sm">Expect a WhatsApp message from us within the next few hours.</p>
               </div>
             ) : (
               <form onSubmit={handleSubmit} className="space-y-4">
-                <h3 className="font-bold text-white text-lg mb-2">
-                  Or leave your details:
-                </h3>
-                <div>
-                  <label className="block text-xs font-medium text-white/60 mb-1.5" htmlFor="name">
-                    Your Name
-                  </label>
-                  <input
-                    id="name"
-                    type="text"
-                    required
-                    value={form.name}
-                    onChange={(e) => setForm({ ...form, name: e.target.value })}
-                    placeholder="Ahmad bin Abdullah"
-                    className="w-full bg-white/10 border border-white/20 rounded-lg px-4 py-3 text-white placeholder:text-white/30 text-sm focus:outline-none focus:ring-2 focus:ring-[oklch(0.65_0.18_264)] transition-all"
-                  />
-                </div>
-                <div>
-                  <label className="block text-xs font-medium text-white/60 mb-1.5" htmlFor="business">
-                    Business Name
-                  </label>
-                  <input
-                    id="business"
-                    type="text"
-                    required
-                    value={form.business}
-                    onChange={(e) => setForm({ ...form, business: e.target.value })}
-                    placeholder="My Awesome Business Sdn Bhd"
-                    className="w-full bg-white/10 border border-white/20 rounded-lg px-4 py-3 text-white placeholder:text-white/30 text-sm focus:outline-none focus:ring-2 focus:ring-[oklch(0.65_0.18_264)] transition-all"
-                  />
-                </div>
-                <div>
-                  <label className="block text-xs font-medium text-white/60 mb-1.5" htmlFor="phone">
-                    WhatsApp Number
-                  </label>
-                  <input
-                    id="phone"
-                    type="tel"
-                    required
-                    value={form.phone}
-                    onChange={(e) => setForm({ ...form, phone: e.target.value })}
-                    placeholder="01X-XXX XXXX"
-                    className="w-full bg-white/10 border border-white/20 rounded-lg px-4 py-3 text-white placeholder:text-white/30 text-sm focus:outline-none focus:ring-2 focus:ring-[oklch(0.65_0.18_264)] transition-all"
-                  />
-                </div>
+                <h3 className="font-bold text-white text-lg mb-2">Or leave your details:</h3>
+                {[
+                  { id: "name", label: "Your Name", placeholder: "Ahmad bin Abdullah", type: "text", key: "name" },
+                  { id: "business", label: "Business Name", placeholder: "My Awesome Business Sdn Bhd", type: "text", key: "business" },
+                  { id: "phone", label: "WhatsApp Number", placeholder: "01X-XXX XXXX", type: "tel", key: "phone" },
+                ].map(({ id, label, placeholder, type, key }) => (
+                  <div key={id}>
+                    <label className="block text-xs font-medium text-white/50 mb-1.5" htmlFor={id}>{label}</label>
+                    <input
+                      id={id}
+                      type={type}
+                      required
+                      value={form[key as keyof typeof form]}
+                      onChange={(e) => setForm({ ...form, [key]: e.target.value })}
+                      placeholder={placeholder}
+                      className="w-full bg-white/10 border border-white/20 rounded-lg px-4 py-3 text-white placeholder:text-white/25 text-sm focus:outline-none focus:ring-2 focus:ring-[#EE2234]/60 transition-all"
+                    />
+                  </div>
+                ))}
                 <button
                   type="submit"
                   disabled={status === "loading"}
-                  className="w-full flex items-center justify-center gap-2 py-3.5 rounded-xl font-semibold text-white text-sm transition-all duration-200 hover:scale-[1.02] active:scale-[0.98] disabled:opacity-60"
-                  style={{ background: "oklch(0.70 0.19 45)" }}
+                  className="w-full flex items-center justify-center gap-2 py-3.5 rounded-xl font-bold text-white text-sm bg-[#EE2234] hover:bg-[#781F21] transition-all duration-200 hover:scale-[1.02] active:scale-[0.98] disabled:opacity-60"
                 >
-                  {status === "loading" ? (
-                    <Loader2 className="w-4 h-4 animate-spin" />
-                  ) : (
-                    <Send className="w-4 h-4" />
-                  )}
+                  {status === "loading" ? <Loader2 className="w-4 h-4 animate-spin" /> : <Send className="w-4 h-4" />}
                   {status === "loading" ? "Sending…" : "Get a Free Website Audit"}
                 </button>
-                <p className="text-center text-xs text-white/40">
-                  No spam. We&apos;ll only contact you about your business.
-                </p>
+                <p className="text-center text-xs text-white/30">No spam. We&apos;ll only contact you about your business.</p>
               </form>
             )}
           </motion.div>

@@ -11,77 +11,56 @@ const features = [
     label: "FREE",
     title: "Professional Website",
     desc: "Custom-designed, mobile-first website that loads in under 2 seconds. Your 24/7 salesperson.",
-    color: "blue",
+    bg: "bg-red-50 border-red-100 hover:border-[#EE2234]/30",
+    iconBg: "bg-red-100 text-[#EE2234]",
+    badge: "bg-[#EE2234] text-white",
   },
   {
     icon: MapPin,
     label: "FREE",
     title: "Custom Domain",
     desc: "Your own .com.my or .com domain — the digital address that builds trust with Malaysian customers.",
-    color: "teal",
+    bg: "bg-[#E9E0D3]/50 border-[#e5e0da] hover:border-[#912428]/30",
+    iconBg: "bg-[#E9E0D3] text-[#781F21]",
+    badge: "bg-[#781F21] text-white",
   },
   {
     icon: Server,
     label: "FREE",
     title: "Fast Web Hosting",
     desc: "Enterprise-grade hosting with 99.9% uptime. No shared servers, no slow load times.",
-    color: "indigo",
+    bg: "bg-red-50 border-red-100 hover:border-[#EE2234]/30",
+    iconBg: "bg-red-100 text-[#EE2234]",
+    badge: "bg-[#EE2234] text-white",
   },
   {
     icon: Bot,
     label: "FREE",
     title: "AI Chatbot",
     desc: "Captures leads 24/7, answers FAQs, and books appointments — even when you're asleep.",
-    color: "violet",
+    bg: "bg-[#E9E0D3]/50 border-[#e5e0da] hover:border-[#912428]/30",
+    iconBg: "bg-[#E9E0D3] text-[#781F21]",
+    badge: "bg-[#781F21] text-white",
   },
   {
     icon: TrendingUp,
     label: "INCLUDED",
     title: "SEO Optimisation",
     desc: "On-page SEO, keyword strategy, and monthly content to rank your business on Google.",
-    color: "emerald",
+    bg: "bg-emerald-50 border-emerald-100 hover:border-emerald-300",
+    iconBg: "bg-emerald-100 text-emerald-700",
+    badge: "bg-emerald-600 text-white",
   },
   {
     icon: Sparkles,
     label: "INCLUDED",
     title: "GEO Optimisation",
     desc: "We optimise your content so ChatGPT, Claude, and Perplexity recommend your business when AI is asked.",
-    color: "amber",
-  },
-];
-
-const colorMap: Record<string, { bg: string; icon: string; badge: string }> = {
-  blue: {
-    bg: "bg-blue-50 border-blue-100 group-hover:border-blue-200",
-    icon: "bg-blue-100 text-blue-600",
-    badge: "bg-blue-600 text-white",
-  },
-  teal: {
-    bg: "bg-teal-50 border-teal-100 group-hover:border-teal-200",
-    icon: "bg-teal-100 text-teal-600",
-    badge: "bg-teal-600 text-white",
-  },
-  indigo: {
-    bg: "bg-indigo-50 border-indigo-100 group-hover:border-indigo-200",
-    icon: "bg-indigo-100 text-indigo-600",
-    badge: "bg-indigo-600 text-white",
-  },
-  violet: {
-    bg: "bg-violet-50 border-violet-100 group-hover:border-violet-200",
-    icon: "bg-violet-100 text-violet-600",
-    badge: "bg-violet-600 text-white",
-  },
-  emerald: {
-    bg: "bg-emerald-50 border-emerald-100 group-hover:border-emerald-200",
-    icon: "bg-emerald-100 text-emerald-600",
-    badge: "bg-emerald-600 text-white",
-  },
-  amber: {
-    bg: "bg-amber-50 border-amber-100 group-hover:border-amber-200",
-    icon: "bg-amber-100 text-amber-600",
+    bg: "bg-amber-50 border-amber-100 hover:border-amber-300",
+    iconBg: "bg-amber-100 text-amber-700",
     badge: "bg-amber-600 text-white",
   },
-};
+];
 
 const containerVariants: Variants = {
   hidden: {},
@@ -98,7 +77,7 @@ export default function WhatYouGet() {
   const inView = useInView(ref, { once: true, margin: "-80px" });
 
   return (
-    <section id="what-you-get" ref={ref} className="py-24 px-4 sm:px-6 bg-[oklch(0.97_0.005_264)]">
+    <section id="what-you-get" ref={ref} className="py-24 px-4 sm:px-6 bg-[#f9f6f3]">
       <div className="max-w-6xl mx-auto">
         <motion.div
           initial={{ opacity: 0, y: 20 }}
@@ -106,14 +85,14 @@ export default function WhatYouGet() {
           transition={{ duration: 0.6 }}
           className="text-center mb-14"
         >
-          <span className="inline-block px-3 py-1 rounded-full text-xs font-semibold uppercase tracking-widest bg-emerald-50 text-emerald-700 border border-emerald-200 mb-4">
+          <span className="inline-block px-3 py-1 rounded-full text-xs font-bold uppercase tracking-widest bg-emerald-50 text-emerald-700 border border-emerald-200 mb-4">
             Everything Included
           </span>
-          <h2 className="text-3xl sm:text-4xl md:text-5xl font-bold tracking-tight text-balance">
+          <h2 className="text-3xl sm:text-4xl md:text-5xl font-bold tracking-tight text-balance text-[#212121]">
             Your Complete Digital{" "}
             <span className="gradient-text">Growth Stack</span>
           </h2>
-          <p className="mt-4 text-lg text-muted-foreground max-w-xl mx-auto">
+          <p className="mt-4 text-lg text-[#787878] max-w-xl mx-auto">
             Six tools that used to cost RM 10,000+ upfront — bundled into one monthly plan.
           </p>
         </motion.div>
@@ -124,27 +103,24 @@ export default function WhatYouGet() {
           animate={inView ? "show" : "hidden"}
           className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-5"
         >
-          {features.map(({ icon: Icon, label, title, desc, color }) => {
-            const c = colorMap[color];
-            return (
-              <motion.div
-                key={title}
-                variants={cardVariants}
-                className={`group relative rounded-2xl border p-6 transition-all duration-300 hover:shadow-lg hover:-translate-y-1 ${c.bg}`}
-              >
-                <div className="flex items-start justify-between mb-5">
-                  <div className={`w-12 h-12 rounded-xl flex items-center justify-center ${c.icon} group-hover:scale-110 transition-transform duration-300`}>
-                    <Icon className="w-6 h-6" />
-                  </div>
-                  <span className={`px-2.5 py-1 rounded-md text-xs font-bold tracking-wide ${c.badge}`}>
-                    {label}
-                  </span>
+          {features.map(({ icon: Icon, label, title, desc, bg, iconBg, badge }) => (
+            <motion.div
+              key={title}
+              variants={cardVariants}
+              className={`group relative rounded-2xl border p-6 transition-all duration-300 hover:shadow-lg hover:-translate-y-1 ${bg}`}
+            >
+              <div className="flex items-start justify-between mb-5">
+                <div className={`w-12 h-12 rounded-xl flex items-center justify-center group-hover:scale-110 transition-transform duration-300 ${iconBg}`}>
+                  <Icon className="w-6 h-6" />
                 </div>
-                <h3 className="font-bold text-foreground mb-2">{title}</h3>
-                <p className="text-sm text-muted-foreground leading-relaxed">{desc}</p>
-              </motion.div>
-            );
-          })}
+                <span className={`px-2.5 py-1 rounded-md text-xs font-bold tracking-wide ${badge}`}>
+                  {label}
+                </span>
+              </div>
+              <h3 className="font-bold text-[#212121] mb-2">{title}</h3>
+              <p className="text-sm text-[#787878] leading-relaxed">{desc}</p>
+            </motion.div>
+          ))}
         </motion.div>
       </div>
     </section>
