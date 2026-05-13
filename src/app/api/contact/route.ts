@@ -5,9 +5,9 @@ export async function POST(req: Request) {
   try {
     const resend = new Resend(process.env.RESEND_API_KEY);
     const body = await req.json();
-    const { name, business, phone, plan, message } = body;
+    const { name, business, ssm, phone, plan, message } = body;
 
-    if (!name || !business || !phone) {
+    if (!name || !business || !ssm || !phone) {
       return NextResponse.json({ error: "Missing required fields" }, { status: 400 });
     }
 
@@ -29,6 +29,12 @@ export async function POST(req: Request) {
             <tr>
               <td style="padding: 12px 0; border-bottom: 1px solid #e5e0da; color: #787878; font-size: 14px;">Business</td>
               <td style="padding: 12px 0; border-bottom: 1px solid #e5e0da; color: #212121; font-size: 14px; font-weight: 600;">${business}</td>
+            </tr>
+            <tr>
+              <td style="padding: 12px 0; border-bottom: 1px solid #e5e0da; color: #787878; font-size: 14px;">SSM No.</td>
+              <td style="padding: 12px 0; border-bottom: 1px solid #e5e0da; color: #212121; font-size: 14px; font-weight: 600;">
+                <a href="https://www.ssm-einfo.my/search?q=${encodeURIComponent(ssm)}" style="color: #912428;">${ssm}</a>
+              </td>
             </tr>
             <tr>
               <td style="padding: 12px 0; border-bottom: 1px solid #e5e0da; color: #787878; font-size: 14px;">WhatsApp</td>

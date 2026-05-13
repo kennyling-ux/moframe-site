@@ -8,6 +8,24 @@ const WA_URL = "https://wa.me/message/OMRIJWN3SVAKM1";
 
 const plans = ["Starter — RM 1,499/mo", "Growth — RM 2,499/mo", "Scale — RM 4,499/mo", "Just exploring"];
 
+// SSM registration number format validator
+// Covers: old Sdn Bhd (7-digit + letter), new MyCoID (12-digit), Enterprise (IP prefix), LLP
+function validateSSM(value: string): string {
+  const v = value.trim().toUpperCase().replace(/\s/g, "");
+  if (!v) return "SSM registration number is required.";
+  const patterns = [
+    { re: /^\d{7}-[A-Z0-9]{1,3}$/, label: "Sdn Bhd / Bhd (old format)" },       // 1234567-X
+    { re: /^\d{12}$/, label: "MyCoID (new format)" },                              // 202001234567
+    { re: /^IP\d{8,10}$/, label: "Enterprise / Sole Proprietor" },                 // IP12345678
+    { re: /^LLP\d{7}-[A-Z]{3}$/, label: "LLP" },                                  // LLP0012345-LGN
+    { re: /^[A-Z]{2}\d{6,10}$/, label: "Partnership / Co-operative" },             // SA1234567
+  ];
+  const matched = patterns.some(({ re }) => re.test(v));
+  if (!matched)
+    return "Doesn't look like a valid SSM number. Check your registration certificate and try again.";
+  return "";
+}
+
 const countryCodes = [
   { code: "+60",  flag: "🇲🇾", name: "Malaysia",      min: 9,  max: 10 },
   { code: "+65",  flag: "🇸🇬", name: "Singapore",     min: 8,  max: 8  },
@@ -29,10 +47,11 @@ export default function CTAFooter() {
   const inView = useInView(ref, { once: true, margin: "-80px" });
 
   const [form, setForm] = useState({
-    name: "", business: "", countryCode: "+60", phone: "", plan: "", message: "",
+    name: "", business: "", ssm: "", countryCode: "+60", phone: "", plan: "", message: "",
   });
   const [status, setStatus] = useState<"idle" | "loading" | "success" | "error">("idle");
   const [phoneError, setPhoneError] = useState("");
+  const [ssmError, setSsmError] = useState("");
 
   const getCountry = (code: string) => countryCodes.find((c) => c.code === code)!;
 
@@ -60,9 +79,13 @@ export default function CTAFooter() {
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
-    const err = validatePhone(form.phone, form.countryCode);
-    if (err) { setPhoneError(err); return; }
+    const phoneErr = validatePhone(form.phone, form.countryCode);
+    const ssmErr = validateSSM(form.ssm);
+    if (phoneErr) setPhoneError(phoneErr);
+    if (ssmErr) setSsmError(ssmErr);
+    if (phoneErr || ssmErr) return;
     setPhoneError("");
+    setSsmError("");
     setStatus("loading");
     const digits = form.phone.replace(/\D/g, "").replace(/^0/, "");
     const fullPhone = `${form.countryCode}${digits}`;
@@ -194,7 +217,7 @@ export default function CTAFooter() {
                   We&apos;ll reach out on WhatsApp within a few hours to arrange your free strategy call.
                 </p>
                 <button
-                  onClick={() => { setStatus("idle"); setForm({ name: "", business: "", countryCode: "+60", phone: "", plan: "", message: "" }); }}
+                  onClick={() => { setStatus("idle"); setSsmError(""); setPhoneError(""); setForm({ name: "", business: "", ssm: "", countryCode: "+60", phone: "", plan: "", message: "" }); }}
                   className="text-xs text-white/30 hover:text-white/60 underline transition-colors mt-2"
                 >
                   Submit another
@@ -207,7 +230,35 @@ export default function CTAFooter() {
 
                 <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
                   {field("name", "Your Name", "Ahmad bin Abdullah")}
-                  {field("business", "Business Name", "My Awesome Business")}
+                  {field("business", "Business Name", "Warung Mak Zul Sdn Bhd")}
+                </div>
+
+                {/* SSM Registration Number */}
+                <div>
+                  <label className="block text-xs font-semibold text-white/50 mb-1.5 uppercase tracking-wide" htmlFor="ssm">
+                    SSM Registration No.
+                  </label>
+                  <input
+                    id="ssm"
+                    type="text"
+                    required
+                    value={form.ssm}
+                    onChange={(e) => {
+                      setForm((f) => ({ ...f, ssm: e.target.value }));
+                      if (ssmError) setSsmError(validateSSM(e.target.value));
+                    }}
+                    onBlur={() => setSsmError(validateSSM(form.ssm))}
+                    placeholder="e.g. 1234567-X or 202001234567"
+                    className={`w-full bg-white/[0.08] border rounded-lg px-4 py-3 text-white placeholder:text-white/25 text-sm focus:outline-none focus:ring-2 transition-all ${
+                      ssmError
+                        ? "border-red-400/60 focus:ring-red-400/30"
+                        : "border-white/15 focus:ring-white/30 focus:border-white/30"
+                    }`}
+                  />
+                  {ssmError
+                    ? <p className="text-xs text-red-400 mt-1.5">{ssmError}</p>
+                    : <p className="text-xs text-white/25 mt-1.5">Must be a valid SSM-registered business number</p>
+                  }
                 </div>
 
                 {/* Phone with country code */}
