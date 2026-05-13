@@ -9,19 +9,19 @@ const WA_URL = "https://wa.me/message/OMRIJWN3SVAKM1";
 const plans = ["Starter — RM 1,499/mo", "Growth — RM 2,499/mo", "Scale — RM 4,499/mo", "Just exploring"];
 
 const countryCodes = [
-  { code: "+60", flag: "🇲🇾", name: "Malaysia" },
-  { code: "+65", flag: "🇸🇬", name: "Singapore" },
-  { code: "+62", flag: "🇮🇩", name: "Indonesia" },
-  { code: "+66", flag: "🇹🇭", name: "Thailand" },
-  { code: "+63", flag: "🇵🇭", name: "Philippines" },
-  { code: "+84", flag: "🇻🇳", name: "Vietnam" },
-  { code: "+61", flag: "🇦🇺", name: "Australia" },
-  { code: "+44", flag: "🇬🇧", name: "United Kingdom" },
-  { code: "+1",  flag: "🇺🇸", name: "United States" },
-  { code: "+86", flag: "🇨🇳", name: "China" },
-  { code: "+91", flag: "🇮🇳", name: "India" },
-  { code: "+971", flag: "🇦🇪", name: "UAE" },
-  { code: "+966", flag: "🇸🇦", name: "Saudi Arabia" },
+  { code: "+60",  flag: "🇲🇾", name: "Malaysia",      min: 9,  max: 10 },
+  { code: "+65",  flag: "🇸🇬", name: "Singapore",     min: 8,  max: 8  },
+  { code: "+62",  flag: "🇮🇩", name: "Indonesia",     min: 8,  max: 12 },
+  { code: "+66",  flag: "🇹🇭", name: "Thailand",      min: 8,  max: 9  },
+  { code: "+63",  flag: "🇵🇭", name: "Philippines",   min: 10, max: 10 },
+  { code: "+84",  flag: "🇻🇳", name: "Vietnam",       min: 9,  max: 10 },
+  { code: "+61",  flag: "🇦🇺", name: "Australia",     min: 9,  max: 9  },
+  { code: "+44",  flag: "🇬🇧", name: "United Kingdom",min: 10, max: 10 },
+  { code: "+1",   flag: "🇺🇸", name: "United States", min: 10, max: 10 },
+  { code: "+86",  flag: "🇨🇳", name: "China",         min: 11, max: 11 },
+  { code: "+91",  flag: "🇮🇳", name: "India",         min: 10, max: 10 },
+  { code: "+971", flag: "🇦🇪", name: "UAE",           min: 9,  max: 9  },
+  { code: "+966", flag: "🇸🇦", name: "Saudi Arabia",  min: 9,  max: 9  },
 ];
 
 export default function CTAFooter() {
@@ -32,11 +32,40 @@ export default function CTAFooter() {
     name: "", business: "", countryCode: "+60", phone: "", plan: "", message: "",
   });
   const [status, setStatus] = useState<"idle" | "loading" | "success" | "error">("idle");
+  const [phoneError, setPhoneError] = useState("");
+
+  const getCountry = (code: string) => countryCodes.find((c) => c.code === code)!;
+
+  const validatePhone = (phone: string, code: string) => {
+    const digits = phone.replace(/\D/g, "").replace(/^0/, "");
+    const country = getCountry(code);
+    if (!digits) return "WhatsApp number is required.";
+    if (digits.length < country.min)
+      return `Too short — ${country.name} numbers need at least ${country.min} digits.`;
+    if (digits.length > country.max)
+      return `Too long — ${country.name} numbers have at most ${country.max} digits.`;
+    return "";
+  };
+
+  const handlePhoneChange = (val: string) => {
+    const cleaned = val.replace(/[^\d\s\-]/g, "");
+    setForm((f) => ({ ...f, phone: cleaned }));
+    if (phoneError) setPhoneError(validatePhone(cleaned, form.countryCode));
+  };
+
+  const handleCodeChange = (code: string) => {
+    setForm((f) => ({ ...f, countryCode: code }));
+    if (phoneError) setPhoneError(validatePhone(form.phone, code));
+  };
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
+    const err = validatePhone(form.phone, form.countryCode);
+    if (err) { setPhoneError(err); return; }
+    setPhoneError("");
     setStatus("loading");
-    const fullPhone = `${form.countryCode}${form.phone.replace(/^0/, "")}`;
+    const digits = form.phone.replace(/\D/g, "").replace(/^0/, "");
+    const fullPhone = `${form.countryCode}${digits}`;
     try {
       const res = await fetch("/api/contact", {
         method: "POST",
@@ -189,11 +218,11 @@ export default function CTAFooter() {
                   <div className="flex gap-2">
                     <select
                       value={form.countryCode}
-                      onChange={(e) => setForm((f) => ({ ...f, countryCode: e.target.value }))}
+                      onChange={(e) => handleCodeChange(e.target.value)}
                       className="bg-white/[0.08] border border-white/15 rounded-lg px-3 py-3 text-white text-sm focus:outline-none focus:ring-2 focus:ring-white/30 transition-all appearance-none shrink-0 w-[110px]"
                       style={{ colorScheme: "dark" }}
                     >
-                      {countryCodes.map(({ code, flag, name }) => (
+                      {countryCodes.map(({ code, flag }) => (
                         <option key={code} value={code} style={{ background: "#212121" }}>
                           {flag} {code}
                         </option>
@@ -204,12 +233,20 @@ export default function CTAFooter() {
                       type="tel"
                       required
                       value={form.phone}
-                      onChange={(e) => setForm((f) => ({ ...f, phone: e.target.value.replace(/[^\d\s\-]/g, "") }))}
-                      placeholder="12-345 6789"
-                      className="flex-1 bg-white/[0.08] border border-white/15 rounded-lg px-4 py-3 text-white placeholder:text-white/25 text-sm focus:outline-none focus:ring-2 focus:ring-white/30 focus:border-white/30 transition-all"
+                      onChange={(e) => handlePhoneChange(e.target.value)}
+                      onBlur={() => setPhoneError(validatePhone(form.phone, form.countryCode))}
+                      placeholder={`e.g. ${getCountry(form.countryCode).min === 8 ? "8123 4567" : "12-345 6789"}`}
+                      className={`flex-1 bg-white/[0.08] border rounded-lg px-4 py-3 text-white placeholder:text-white/25 text-sm focus:outline-none focus:ring-2 transition-all ${
+                        phoneError
+                          ? "border-red-400/60 focus:ring-red-400/30"
+                          : "border-white/15 focus:ring-white/30 focus:border-white/30"
+                      }`}
                     />
                   </div>
-                  <p className="text-xs text-white/25 mt-1.5">Enter without the leading 0 — e.g. 12-345 6789</p>
+                  {phoneError
+                    ? <p className="text-xs text-red-400 mt-1.5">{phoneError}</p>
+                    : <p className="text-xs text-white/25 mt-1.5">Enter without leading 0 — digits only</p>
+                  }
                 </div>
 
                 <div>
