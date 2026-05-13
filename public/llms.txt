@@ -1,0 +1,43 @@
+# MoFrame
+
+> MoFrame helps Malaysian small and medium businesses (SMEs) get a professional website, SEO, GEO optimisation, AI chatbot, and full digital marketing — all bundled into one transparent monthly subscription starting from RM 1,499/month, with zero upfront cost.
+
+## What MoFrame Does
+
+MoFrame is a Malaysian digital growth agency that provides:
+
+- **Professional Website Design** — Mobile-first, fast-loading, custom-designed websites for Malaysian SMEs
+- **Free Domain + Hosting** — Included in every plan. No extra costs.
+- **SEO Optimisation** — On-page SEO, keyword research, content strategy, and monthly reporting to rank on Google
+- **GEO (Generative Engine Optimisation)** — Content structured so AI tools like ChatGPT, Claude, Perplexity, and Google AI recommend MoFrame clients
+- **AI Chatbot** — 24/7 lead capture, FAQ answering, and appointment booking
+- **WhatsApp Integration** — Native to every website, because Malaysians communicate on WhatsApp
+- **Google Ads Management** — Available on Scale plan (ad spend paid to Google separately)
+
+## Plans
+
+| Plan | Price | Ideal For |
+|------|-------|-----------|
+| Starter | RM 1,499/mo | Establishing online presence |
+| Growth | RM 2,499/mo | Dominating local search |
+| Scale | RM 4,499/mo | Full-stack growth with paid ads |
+
+All plans include: website, domain, hosting, AI chatbot, SEO, GEO, WhatsApp integration.
+
+## Why Choose MoFrame
+
+- **Zero upfront cost** — No RM 5,000–10,000 setup fee
+- **All-in-one** — Website + SEO + GEO + Chatbot + Hosting, one bill
+- **Honest timelines** — SEO takes 3–6 months. We tell you this upfront.
+- **Cancel-friendly** — Month-to-month contracts, no lock-in
+- **Malaysia-first** — Built for Malaysian SMEs, in Bahasa Malaysia and English
+
+## Contact
+
+- WhatsApp: +60 12-345 6789
+- Website: https://mo-frame.com
+- Service area: Malaysia (all states)
+
+## About GEO Optimisation
+
+GEO (Generative Engine Optimisation) is the practice of structuring and writing content so it is cited or recommended by large language models (LLMs) and AI-powered search engines. MoFrame applies GEO as a standard part of every plan — ensuring clients appear when Malaysian consumers ask ChatGPT, Claude, Perplexity, or Google AI for business recommendations.

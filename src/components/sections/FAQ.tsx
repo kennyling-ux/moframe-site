@@ -1,0 +1,97 @@
+"use client";
+
+import { motion, useInView } from "framer-motion";
+import { useRef } from "react";
+import {
+  Accordion,
+  AccordionContent,
+  AccordionItem,
+  AccordionTrigger,
+} from "@/components/ui/accordion";
+
+const faqs = [
+  {
+    q: "Is the website really free?",
+    a: "Yes — 100%. The website design, build, domain, and hosting are all included in your monthly plan. You pay RM 1,499/mo (or higher for Growth/Scale) and we handle everything. No setup fee. No hidden costs.",
+  },
+  {
+    q: "What is GEO optimisation?",
+    a: "GEO stands for Generative Engine Optimisation. It means we structure and write your content so that AI tools like ChatGPT, Claude, Perplexity, and Google's AI Overview recommend your business when someone asks about what you offer. It's the new SEO — and most agencies don't offer it yet.",
+  },
+  {
+    q: "How long until I see SEO results?",
+    a: "SEO is a long game. You'll typically see early movement in 4–8 weeks, meaningful traffic in 3–4 months, and significant results in 6–12 months. We set expectations honestly upfront — no false promises. We send monthly reports so you always know what's happening.",
+  },
+  {
+    q: "What happens if I cancel my plan?",
+    a: "Your website stays live until the contract period ends. We'll give you your files and help you migrate to another host if needed. We believe in earning your loyalty every month, not locking you in.",
+  },
+  {
+    q: "Is the Google Ads budget included in the Scale plan?",
+    a: "No — ad spend is paid directly to Google. You control your ad budget. We manage the campaigns, write the ads, optimise performance, and make sure every ringgit is spent wisely.",
+  },
+  {
+    q: "Can I see examples of websites you've built?",
+    a: "Absolutely. Chat with us on WhatsApp and we'll share our portfolio and case studies relevant to your industry. We build across F&B, professional services, retail, healthcare, and more.",
+  },
+  {
+    q: "Do you only work with businesses in Kuala Lumpur?",
+    a: "No — we work with SMEs across Malaysia. All our work is done remotely, so location doesn't matter. We've worked with clients in KL, Penang, Johor, Sabah, and Sarawak.",
+  },
+  {
+    q: "How do I get started?",
+    a: "Just tap the WhatsApp button on this page. We'll set up a free 30-minute call to understand your business, and if we're a good fit, we start building within days. No commitment required to have that conversation.",
+  },
+];
+
+export default function FAQ() {
+  const ref = useRef<HTMLElement>(null);
+  const inView = useInView(ref, { once: true, margin: "-80px" });
+
+  return (
+    <section id="faq" ref={ref} className="py-24 px-4 sm:px-6">
+      <div className="max-w-3xl mx-auto">
+        <motion.div
+          initial={{ opacity: 0, y: 20 }}
+          animate={inView ? { opacity: 1, y: 0 } : {}}
+          transition={{ duration: 0.6 }}
+          className="text-center mb-14"
+        >
+          <span className="inline-block px-3 py-1 rounded-full text-xs font-semibold uppercase tracking-widest bg-[oklch(0.94_0.05_264)] text-[oklch(0.40_0.18_264)] border border-[oklch(0.85_0.08_264)] mb-4">
+            FAQ
+          </span>
+          <h2 className="text-3xl sm:text-4xl md:text-5xl font-bold tracking-tight text-balance">
+            Questions We Get{" "}
+            <span className="gradient-text">All the Time</span>
+          </h2>
+          <p className="mt-4 text-lg text-muted-foreground">
+            Still not sure? Chat with us on WhatsApp — we reply within minutes.
+          </p>
+        </motion.div>
+
+        <motion.div
+          initial={{ opacity: 0, y: 24 }}
+          animate={inView ? { opacity: 1, y: 0 } : {}}
+          transition={{ duration: 0.6, delay: 0.2 }}
+        >
+          <Accordion className="space-y-3">
+            {faqs.map((faq, i) => (
+              <AccordionItem
+                key={i}
+                value={`item-${i}`}
+                className="border border-border rounded-xl bg-white px-2 overflow-hidden data-[state=open]:shadow-sm transition-shadow"
+              >
+                <AccordionTrigger className="px-4 py-4 text-left font-semibold text-foreground hover:no-underline hover:text-[oklch(0.48_0.22_264)] transition-colors text-sm sm:text-base">
+                  {faq.q}
+                </AccordionTrigger>
+                <AccordionContent className="px-4 pb-4 text-muted-foreground text-sm leading-relaxed">
+                  {faq.a}
+                </AccordionContent>
+              </AccordionItem>
+            ))}
+          </Accordion>
+        </motion.div>
+      </div>
+    </section>
+  );
+}
