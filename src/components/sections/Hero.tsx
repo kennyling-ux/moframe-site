@@ -6,7 +6,7 @@ import { ArrowRight, CheckCircle, Star } from "lucide-react";
 
 const WA_URL = "https://wa.me/message/OMRIJWN3SVAKM1";
 
-const trust = ["No setup fee", "No hidden costs", "Cancel-friendly contracts"];
+const trust = ["No setup fee", "No hidden costs", "14-day money-back guarantee", "Cancel-friendly contracts"];
 
 const fadeUp: Variants = {
   hidden: { opacity: 0, y: 24 },
@@ -57,7 +57,7 @@ export default function Hero() {
               <Star key={i} className="w-3 h-3 fill-amber-400 text-amber-400" />
             ))}
           </div>
-          <span>Trusted by 50+ Malaysian SMEs</span>
+          <span>Helping SMEs grow across Malaysia & beyond</span>
         </motion.div>
 
         {/* Headline */}
@@ -97,7 +97,7 @@ export default function Hero() {
             href={WA_URL}
             target="_blank"
             rel="noopener noreferrer"
-            className="group inline-flex items-center gap-2 px-7 py-4 rounded-xl font-bold text-white text-base bg-[#EE2234] hover:bg-[#781F21] shadow-lg hover:shadow-xl hover:scale-[1.02] active:scale-[0.98] transition-all duration-200 w-full sm:w-auto justify-center"
+            className="group inline-flex items-center gap-2 px-7 py-4 rounded-xl font-bold text-white text-base bg-[#912428] hover:bg-[#781F21] shadow-lg hover:shadow-xl hover:scale-[1.02] active:scale-[0.98] transition-all duration-200 w-full sm:w-auto justify-center"
           >
             Get Your Free Website Now
             <ArrowRight className="w-4 h-4 group-hover:translate-x-1 transition-transform" />
@@ -155,7 +155,7 @@ export default function Hero() {
                 <div className="w-4/6 h-3 rounded bg-[#e5e0da]" />
               </div>
               <div className="flex gap-3">
-                <div className="h-10 w-36 rounded-lg bg-[#EE2234]" />
+                <div className="h-10 w-36 rounded-lg bg-[#912428]" />
                 <div className="h-10 w-28 rounded-lg bg-white border border-[#e5e0da]" />
               </div>
               <div className="flex flex-wrap gap-2 pt-2">

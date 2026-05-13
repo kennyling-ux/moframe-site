@@ -31,7 +31,7 @@ export default function WhatsAppButton() {
             initial={{ opacity: 0, x: 10 }}
             animate={{ opacity: 1, x: 0 }}
             transition={{ delay: 0.4 }}
-            className="mb-1 bg-white rounded-xl px-3 py-2 shadow-lg border border-border text-sm font-medium text-foreground whitespace-nowrap hidden sm:block"
+            className="relative mb-1 bg-white rounded-xl px-3 py-2 shadow-lg border border-border text-sm font-medium text-foreground whitespace-nowrap hidden sm:block"
           >
             Chat with us on WhatsApp
             <div className="absolute right-[-6px] top-1/2 -translate-y-1/2 w-3 h-3 bg-white border-r border-t border-border rotate-45" />

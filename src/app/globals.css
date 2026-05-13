@@ -60,10 +60,10 @@
   --popover: #ffffff;
   --popover-foreground: #212121;
 
-  /* Brand — MoFrame red */
-  --primary: #EE2234;
+  /* Brand — MoFrame crimson */
+  --primary: #912428;
   --primary-foreground: #ffffff;
-  --brand: #EE2234;
+  --brand: #912428;
   --brand-dark: #781F21;
 
   /* Cream — warm off-white from brand palette */
@@ -77,20 +77,20 @@
   --accent: #f9f6f3;
   --accent-foreground: #212121;
 
-  --destructive: #EE2234;
+  --destructive: #912428;
   --border: #e5e0da;
   --input: #e5e0da;
-  --ring: #EE2234;
+  --ring: #912428;
   --radius: 0.75rem;
 
   --sidebar: #f9f6f3;
   --sidebar-foreground: #212121;
-  --sidebar-primary: #EE2234;
+  --sidebar-primary: #912428;
   --sidebar-primary-foreground: #ffffff;
   --sidebar-accent: #f5f2ef;
   --sidebar-accent-foreground: #212121;
   --sidebar-border: #e5e0da;
-  --sidebar-ring: #EE2234;
+  --sidebar-ring: #912428;
 }
 
 @layer base {

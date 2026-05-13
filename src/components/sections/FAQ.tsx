@@ -23,6 +23,10 @@ const faqs = [
     a: "SEO is a long game. You'll typically see early movement in 4–8 weeks, meaningful traffic in 3–4 months, and significant results in 6–12 months. We set expectations honestly upfront — no false promises. We send monthly reports so you always know what's happening.",
   },
   {
+    q: "Is there a money-back guarantee?",
+    a: "Yes — every plan comes with a 14-day money-back guarantee. If you're not satisfied within your first 14 days, we'll refund your first month, no questions asked. We're confident in what we deliver.",
+  },
+  {
     q: "What happens if I cancel my plan?",
     a: "Your website stays live until the contract period ends. We'll give you your files and help you migrate to another host if needed. We believe in earning your loyalty every month, not locking you in.",
   },

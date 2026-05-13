@@ -161,8 +161,6 @@ export default function RootLayout({
           href="https://fonts.bunny.net/css?family=satoshi:400,500,700&display=swap"
           rel="stylesheet"
         />
-        {/* Tally popup SDK */}
-        <script async src="https://tally.so/widgets/embed.js" />
         <script
           type="application/ld+json"
           dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
