@@ -43,8 +43,9 @@ export default function Comparison() {
           initial={{ opacity: 0, y: 24 }}
           animate={inView ? { opacity: 1, y: 0 } : {}}
           transition={{ duration: 0.6, delay: 0.2 }}
-          className="rounded-2xl border border-[#e5e0da] overflow-hidden shadow-lg"
+          className="overflow-x-auto rounded-2xl border border-[#e5e0da] shadow-lg"
         >
+          <div className="min-w-[560px]">
           {/* Header */}
           <div className="grid grid-cols-3 bg-[#212121] text-white">
             <div className="px-4 sm:px-6 py-4 text-sm font-semibold text-white/60">What you get</div>
@@ -78,6 +79,7 @@ export default function Comparison() {
               </div>
             </motion.div>
           ))}
+          </div>
         </motion.div>
       </div>
     </section>

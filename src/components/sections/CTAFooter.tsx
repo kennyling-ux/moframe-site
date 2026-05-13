@@ -143,7 +143,7 @@ export default function CTAFooter() {
                 </div>
                 <h3 className="text-xl font-bold text-white">We&apos;ll be in touch!</h3>
                 <p className="text-white/50 text-sm max-w-xs">
-                  Expect a WhatsApp or email from us within the next few hours.
+                  We&apos;ll reach out on WhatsApp within a few hours to arrange your free strategy call.
                 </p>
                 <button
                   onClick={() => { setStatus("idle"); setForm({ name: "", business: "", phone: "", plan: "", message: "" }); }}
@@ -154,8 +154,8 @@ export default function CTAFooter() {
               </div>
             ) : (
               <form onSubmit={handleSubmit} className="space-y-4">
-                <h3 className="font-bold text-white text-xl mb-1">Get a Free Website Audit</h3>
-                <p className="text-sm text-white/40 mb-5">We&apos;ll review your current online presence and send you a personalised growth plan.</p>
+                <h3 className="font-bold text-white text-xl mb-1">Book Your Free Strategy Call</h3>
+                <p className="text-sm text-white/40 mb-5">Tell us about your business and we&apos;ll put together a personalised growth plan — no commitment needed.</p>
 
                 <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
                   {field("name", "Your Name", "Ahmad bin Abdullah")}
@@ -207,12 +207,13 @@ export default function CTAFooter() {
                 >
                   {status === "loading"
                     ? <><Loader2 className="w-4 h-4 animate-spin" /> Sending…</>
-                    : <><Send className="w-4 h-4" /> Send My Free Audit Request</>
+                    : <><Send className="w-4 h-4" /> Book My Free Strategy Call</>
                   }
                 </button>
 
                 <p className="text-center text-xs text-white/25">
-                  No spam. We only contact you about your business.
+                  No spam. By submitting you agree to our{" "}
+                  <a href="/terms" className="underline hover:text-white/50 transition-colors">Terms & Conditions</a>.
                 </p>
               </form>
             )}

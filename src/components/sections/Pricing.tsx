@@ -3,7 +3,7 @@
 import { motion, useInView } from "framer-motion";
 import type { Variants } from "framer-motion";
 import { useRef } from "react";
-import { Check, Zap, ArrowRight, Star } from "lucide-react";
+import { Check, ArrowRight, Star } from "lucide-react";
 
 const WA_URL = (plan: string) =>
   `https://wa.me/60123548676?text=${encodeURIComponent(`Hi, I'm interested in the MoFrame ${plan} plan. Can you tell me more?`)}`;
@@ -142,21 +142,17 @@ export default function Pricing() {
                 </div>
               </div>
 
-              <ul className="space-y-3 flex-1 mb-8">
+              <ul className="space-y-2.5 flex-1 mb-8">
                 {plan.features.map(({ label, free }) => (
-                  <li key={label} className="flex items-start gap-3">
-                    {free ? (
-                      <span className="shrink-0 inline-flex items-center justify-center w-5 h-5 rounded-full bg-emerald-50 border border-emerald-200 mt-0.5">
-                        <Check className="w-3 h-3 text-emerald-600" />
-                      </span>
-                    ) : (
-                      <span className="shrink-0 inline-flex items-center justify-center w-5 h-5 rounded-full bg-red-50 mt-0.5">
-                        <Zap className="w-3 h-3 text-[#EE2234]" />
-                      </span>
-                    )}
+                  <li key={label} className="flex items-start gap-2.5">
+                    <span className="shrink-0 inline-flex items-center justify-center w-5 h-5 rounded-full bg-emerald-50 border border-emerald-200 mt-0.5">
+                      <Check className="w-3 h-3 text-emerald-600" />
+                    </span>
                     <span className="text-sm text-[#212121]">
-                      {free && <strong className="text-emerald-600 font-semibold">FREE</strong>}{" "}
                       {label}
+                      {free && (
+                        <span className="ml-1.5 text-xs font-bold text-emerald-600 bg-emerald-50 px-1.5 py-0.5 rounded">FREE</span>
+                      )}
                     </span>
                   </li>
                 ))}

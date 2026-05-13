@@ -2,7 +2,7 @@
 
 import { motion } from "framer-motion";
 import type { Variants } from "framer-motion";
-import { ArrowRight, CheckCircle, Star } from "lucide-react";
+import { ArrowRight, CheckCircle } from "lucide-react";
 
 const WA_URL = "https://wa.me/message/OMRIJWN3SVAKM1";
 
@@ -47,17 +47,8 @@ export default function Hero() {
           custom={0}
           className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-white border border-[#e5e0da] shadow-sm text-sm text-[#787878]"
         >
-          <div className="flex -space-x-1">
-            {[1, 2, 3].map((i) => (
-              <div key={i} className="w-6 h-6 rounded-full border-2 border-white gradient-brand" />
-            ))}
-          </div>
-          <div className="flex items-center gap-0.5">
-            {[...Array(5)].map((_, i) => (
-              <Star key={i} className="w-3 h-3 fill-amber-400 text-amber-400" />
-            ))}
-          </div>
-          <span>Helping SMEs grow across Malaysia & beyond</span>
+          <span className="w-2 h-2 rounded-full bg-emerald-400 animate-pulse shrink-0" />
+          <span>Serving businesses across Malaysia & worldwide</span>
         </motion.div>
 
         {/* Headline */}
@@ -103,7 +94,11 @@ export default function Hero() {
             <ArrowRight className="w-4 h-4 group-hover:translate-x-1 transition-transform" />
           </a>
           <button
-            onClick={() => document.querySelector("#how-it-works")?.scrollIntoView({ behavior: "smooth" })}
+            onClick={() => {
+            const el = document.querySelector("#how-it-works");
+            if (!el) return;
+            window.scrollTo({ top: el.getBoundingClientRect().top + window.scrollY - 80, behavior: "smooth" });
+          }}
             className="inline-flex items-center gap-2 px-7 py-4 rounded-xl font-bold text-[#212121] text-base bg-white border border-[#e5e0da] hover:border-[#EE2234] hover:bg-[#f9f6f3] transition-all duration-200 w-full sm:w-auto justify-center cursor-pointer"
           >
             See How It Works
