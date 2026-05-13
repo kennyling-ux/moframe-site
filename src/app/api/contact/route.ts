@@ -12,7 +12,7 @@ export async function POST(req: Request) {
     }
 
     await resend.emails.send({
-      from: "MoFrame <onboarding@resend.dev>",
+      from: "MoFrame <noreply@mo-frame.com>",
       to: ["kennyling@mo-frame.com"],
       subject: `New Lead: ${business} — ${plan ?? "General Enquiry"}`,
       html: `
