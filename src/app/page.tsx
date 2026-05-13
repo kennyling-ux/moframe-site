@@ -5,6 +5,7 @@ import Pricing from "@/components/sections/Pricing";
 import WhatYouGet from "@/components/sections/WhatYouGet";
 import Comparison from "@/components/sections/Comparison";
 import HowItWorks from "@/components/sections/HowItWorks";
+import Testimonials from "@/components/sections/Testimonials";
 import FAQ from "@/components/sections/FAQ";
 import CTAFooter from "@/components/sections/CTAFooter";
 import Footer from "@/components/Footer";
@@ -21,6 +22,7 @@ export default function Home() {
         <WhatYouGet />
         <Comparison />
         <HowItWorks />
+        <Testimonials />
         <FAQ />
         <CTAFooter />
       </main>

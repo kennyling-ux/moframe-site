@@ -132,7 +132,7 @@ export default function Hero() {
           initial="hidden"
           animate="show"
           custom={5}
-          className="relative mt-8 w-full max-w-2xl"
+          className="relative mt-8 w-full max-w-2xl px-10 sm:px-0"
         >
           <div className="relative bg-white rounded-2xl border border-[#e5e0da] shadow-2xl overflow-hidden">
             {/* Browser chrome */}
@@ -172,7 +172,7 @@ export default function Hero() {
           <motion.div
             animate={{ y: [0, -8, 0] }}
             transition={{ duration: 3, repeat: Infinity, ease: "easeInOut" }}
-            className="absolute -left-4 sm:-left-8 top-16 bg-white rounded-xl border border-[#e5e0da] shadow-lg px-4 py-3 text-left"
+            className="absolute -left-8 top-16 bg-white rounded-xl border border-[#e5e0da] shadow-lg px-4 py-3 text-left"
           >
             <div className="text-2xl font-bold text-[#212121]">3–5</div>
             <div className="text-xs text-[#787878]">Days to launch</div>
@@ -180,7 +180,7 @@ export default function Hero() {
           <motion.div
             animate={{ y: [0, 8, 0] }}
             transition={{ duration: 3.5, repeat: Infinity, ease: "easeInOut", delay: 0.5 }}
-            className="absolute -right-4 sm:-right-8 bottom-16 bg-white rounded-xl border border-[#e5e0da] shadow-lg px-4 py-3 text-left"
+            className="absolute -right-8 bottom-16 bg-white rounded-xl border border-[#e5e0da] shadow-lg px-4 py-3 text-left"
           >
             <div className="text-2xl font-bold text-[#EE2234]">RM&nbsp;0</div>
             <div className="text-xs text-[#787878]">Setup cost</div>

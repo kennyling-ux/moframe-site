@@ -15,7 +15,7 @@ export default function Footer() {
           <span className="text-white font-bold text-sm tracking-tight">MoFrame</span>
         </div>
         <p className="text-xs text-white/30 text-center">
-          © {new Date().getFullYear()} MoFrame. All rights reserved. Helping Malaysian SMEs grow online.
+          © {new Date().getFullYear()} MoFrame. All rights reserved. Helping businesses grow online — Malaysia & worldwide.
         </p>
         <div className="flex gap-4 text-xs text-white/40">
           <a href="/privacy" className="hover:text-white/70 transition-colors">Privacy</a>

@@ -5,7 +5,8 @@ import type { Variants } from "framer-motion";
 import { useRef } from "react";
 import { Check, Zap, ArrowRight, Star } from "lucide-react";
 
-const WA_URL = (_plan: string) => `https://wa.me/message/OMRIJWN3SVAKM1`;
+const WA_URL = (plan: string) =>
+  `https://wa.me/60123548676?text=${encodeURIComponent(`Hi, I'm interested in the MoFrame ${plan} plan. Can you tell me more?`)}`;
 
 const plans = [
   {
@@ -118,8 +119,8 @@ export default function Pricing() {
               variants={cardVariants}
               className={`relative flex flex-col rounded-2xl border p-7 transition-all duration-300 ${
                 plan.highlight
-                  ? "border-[#EE2234] shadow-2xl shadow-[#EE2234]/10 scale-[1.02] bg-gradient-to-b from-white to-red-50/30"
-                  : "border-[#e5e0da] bg-white hover:shadow-lg hover:border-[#EE2234]/40"
+                  ? "border-[#912428] shadow-2xl shadow-[#912428]/10 scale-[1.02] bg-gradient-to-b from-white to-red-50/30"
+                  : "border-[#e5e0da] bg-white hover:shadow-lg hover:border-[#912428]/40"
               }`}
             >
               {plan.badge && (
@@ -167,8 +168,8 @@ export default function Pricing() {
                 rel="noopener noreferrer"
                 className={`group flex items-center justify-center gap-2 w-full py-3.5 rounded-xl font-bold text-sm transition-all duration-200 hover:scale-[1.02] active:scale-[0.98] ${
                   plan.highlight
-                    ? "bg-[#EE2234] text-white hover:bg-[#781F21] shadow-lg"
-                    : "border border-[#e5e0da] bg-white text-[#212121] hover:border-[#EE2234] hover:bg-red-50"
+                    ? "bg-[#912428] text-white hover:bg-[#781F21] shadow-lg"
+                    : "border border-[#e5e0da] bg-white text-[#212121] hover:border-[#912428] hover:bg-red-50"
                 }`}
               >
                 Start Now

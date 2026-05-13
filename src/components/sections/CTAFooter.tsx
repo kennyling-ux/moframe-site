@@ -48,7 +48,7 @@ export default function CTAFooter() {
         value={form[id]}
         onChange={(e) => setForm((f) => ({ ...f, [id]: e.target.value }))}
         placeholder={placeholder}
-        className="w-full bg-white/8 border border-white/15 rounded-lg px-4 py-3 text-white placeholder:text-white/25 text-sm focus:outline-none focus:ring-2 focus:ring-[#EE2234]/50 focus:border-[#EE2234]/50 transition-all"
+        className="w-full bg-white/[0.08] border border-white/15 rounded-lg px-4 py-3 text-white placeholder:text-white/25 text-sm focus:outline-none focus:ring-2 focus:ring-white/30 focus:border-white/30 transition-all"
       />
     </div>
   );
@@ -172,7 +172,7 @@ export default function CTAFooter() {
                     id="plan"
                     value={form.plan}
                     onChange={(e) => setForm((f) => ({ ...f, plan: e.target.value }))}
-                    className="w-full bg-white/8 border border-white/15 rounded-lg px-4 py-3 text-sm text-white focus:outline-none focus:ring-2 focus:ring-[#EE2234]/50 transition-all appearance-none"
+                    className="w-full bg-white/[0.08] border border-white/15 rounded-lg px-4 py-3 text-sm text-white focus:outline-none focus:ring-2 focus:ring-white/30 transition-all appearance-none"
                     style={{ colorScheme: "dark" }}
                   >
                     <option value="" style={{ background: "#212121" }}>Select a plan…</option>
@@ -192,7 +192,7 @@ export default function CTAFooter() {
                     value={form.message}
                     onChange={(e) => setForm((f) => ({ ...f, message: e.target.value }))}
                     placeholder="What do you sell? Who are your customers? Any specific goals?"
-                    className="w-full bg-white/8 border border-white/15 rounded-lg px-4 py-3 text-white placeholder:text-white/25 text-sm focus:outline-none focus:ring-2 focus:ring-[#EE2234]/50 focus:border-[#EE2234]/50 transition-all resize-none"
+                    className="w-full bg-white/8 border border-white/15 rounded-lg px-4 py-3 text-white placeholder:text-white/25 text-sm focus:outline-none focus:ring-2 focus:ring-white/30 focus:border-white/30 transition-all resize-none"
                   />
                 </div>
 
@@ -203,7 +203,7 @@ export default function CTAFooter() {
                 <button
                   type="submit"
                   disabled={status === "loading"}
-                  className="w-full flex items-center justify-center gap-2 py-3.5 rounded-xl font-bold text-white text-sm bg-[#EE2234] hover:bg-[#781F21] transition-all duration-200 hover:scale-[1.01] active:scale-[0.99] disabled:opacity-60 shadow-lg"
+                  className="w-full flex items-center justify-center gap-2 py-3.5 rounded-xl font-bold text-white text-sm bg-[#912428] hover:bg-[#781F21] transition-all duration-200 hover:scale-[1.01] active:scale-[0.99] disabled:opacity-60 shadow-lg"
                 >
                   {status === "loading"
                     ? <><Loader2 className="w-4 h-4 animate-spin" /> Sending…</>

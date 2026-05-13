@@ -39,8 +39,12 @@ const faqs = [
     a: "Absolutely. Chat with us on WhatsApp and we'll share our portfolio and case studies relevant to your industry. We build across F&B, professional services, retail, healthcare, and more.",
   },
   {
-    q: "Do you only work with businesses in Kuala Lumpur?",
-    a: "No — we work with SMEs across Malaysia. All our work is done remotely, so location doesn't matter. We've worked with clients in KL, Penang, Johor, Sabah, and Sarawak.",
+    q: "Do you only work with businesses in Malaysia?",
+    a: "We work with businesses globally — our client base spans Malaysia, Singapore, Australia, and beyond. That said, we have deep expertise in the Malaysian market and understand local SEO, buyer behaviour, and the Bahasa Malaysia/English mix that converts here. Wherever you are, we can help.",
+  },
+  {
+    q: "Do you manage Meta Ads or social media advertising?",
+    a: "We focus on what drives long-term, compounding growth — website, SEO, GEO, AI chatbot, and Google Ads (Scale plan). We don't manage Meta Ads (Facebook/Instagram), TikTok Ads, or other social media advertising. If you need those, we're happy to refer you to a trusted partner.",
   },
   {
     q: "How do I get started?",
