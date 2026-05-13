@@ -8,21 +8,40 @@ const WA_URL = "https://wa.me/message/OMRIJWN3SVAKM1";
 
 const plans = ["Starter — RM 1,499/mo", "Growth — RM 2,499/mo", "Scale — RM 4,499/mo", "Just exploring"];
 
+const countryCodes = [
+  { code: "+60", flag: "🇲🇾", name: "Malaysia" },
+  { code: "+65", flag: "🇸🇬", name: "Singapore" },
+  { code: "+62", flag: "🇮🇩", name: "Indonesia" },
+  { code: "+66", flag: "🇹🇭", name: "Thailand" },
+  { code: "+63", flag: "🇵🇭", name: "Philippines" },
+  { code: "+84", flag: "🇻🇳", name: "Vietnam" },
+  { code: "+61", flag: "🇦🇺", name: "Australia" },
+  { code: "+44", flag: "🇬🇧", name: "United Kingdom" },
+  { code: "+1",  flag: "🇺🇸", name: "United States" },
+  { code: "+86", flag: "🇨🇳", name: "China" },
+  { code: "+91", flag: "🇮🇳", name: "India" },
+  { code: "+971", flag: "🇦🇪", name: "UAE" },
+  { code: "+966", flag: "🇸🇦", name: "Saudi Arabia" },
+];
+
 export default function CTAFooter() {
   const ref = useRef<HTMLElement>(null);
   const inView = useInView(ref, { once: true, margin: "-80px" });
 
-  const [form, setForm] = useState({ name: "", business: "", phone: "", plan: "", message: "" });
+  const [form, setForm] = useState({
+    name: "", business: "", countryCode: "+60", phone: "", plan: "", message: "",
+  });
   const [status, setStatus] = useState<"idle" | "loading" | "success" | "error">("idle");
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     setStatus("loading");
+    const fullPhone = `${form.countryCode}${form.phone.replace(/^0/, "")}`;
     try {
       const res = await fetch("/api/contact", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
-        body: JSON.stringify(form),
+        body: JSON.stringify({ ...form, phone: fullPhone }),
       });
       if (!res.ok) throw new Error();
       setStatus("success");
@@ -146,7 +165,7 @@ export default function CTAFooter() {
                   We&apos;ll reach out on WhatsApp within a few hours to arrange your free strategy call.
                 </p>
                 <button
-                  onClick={() => { setStatus("idle"); setForm({ name: "", business: "", phone: "", plan: "", message: "" }); }}
+                  onClick={() => { setStatus("idle"); setForm({ name: "", business: "", countryCode: "+60", phone: "", plan: "", message: "" }); }}
                   className="text-xs text-white/30 hover:text-white/60 underline transition-colors mt-2"
                 >
                   Submit another
@@ -162,7 +181,36 @@ export default function CTAFooter() {
                   {field("business", "Business Name", "My Awesome Business")}
                 </div>
 
-                {field("phone", "WhatsApp Number", "012-345 6789", "tel")}
+                {/* Phone with country code */}
+                <div>
+                  <label className="block text-xs font-semibold text-white/50 mb-1.5 uppercase tracking-wide">
+                    WhatsApp Number
+                  </label>
+                  <div className="flex gap-2">
+                    <select
+                      value={form.countryCode}
+                      onChange={(e) => setForm((f) => ({ ...f, countryCode: e.target.value }))}
+                      className="bg-white/[0.08] border border-white/15 rounded-lg px-3 py-3 text-white text-sm focus:outline-none focus:ring-2 focus:ring-white/30 transition-all appearance-none shrink-0 w-[110px]"
+                      style={{ colorScheme: "dark" }}
+                    >
+                      {countryCodes.map(({ code, flag, name }) => (
+                        <option key={code} value={code} style={{ background: "#212121" }}>
+                          {flag} {code}
+                        </option>
+                      ))}
+                    </select>
+                    <input
+                      id="phone"
+                      type="tel"
+                      required
+                      value={form.phone}
+                      onChange={(e) => setForm((f) => ({ ...f, phone: e.target.value.replace(/[^\d\s\-]/g, "") }))}
+                      placeholder="12-345 6789"
+                      className="flex-1 bg-white/[0.08] border border-white/15 rounded-lg px-4 py-3 text-white placeholder:text-white/25 text-sm focus:outline-none focus:ring-2 focus:ring-white/30 focus:border-white/30 transition-all"
+                    />
+                  </div>
+                  <p className="text-xs text-white/25 mt-1.5">Enter without the leading 0 — e.g. 12-345 6789</p>
+                </div>
 
                 <div>
                   <label className="block text-xs font-semibold text-white/50 mb-1.5 uppercase tracking-wide" htmlFor="plan">
@@ -192,7 +240,7 @@ export default function CTAFooter() {
                     value={form.message}
                     onChange={(e) => setForm((f) => ({ ...f, message: e.target.value }))}
                     placeholder="What do you sell? Who are your customers? Any specific goals?"
-                    className="w-full bg-white/8 border border-white/15 rounded-lg px-4 py-3 text-white placeholder:text-white/25 text-sm focus:outline-none focus:ring-2 focus:ring-white/30 focus:border-white/30 transition-all resize-none"
+                    className="w-full bg-white/[0.08] border border-white/15 rounded-lg px-4 py-3 text-white placeholder:text-white/25 text-sm focus:outline-none focus:ring-2 focus:ring-white/30 focus:border-white/30 transition-all resize-none"
                   />
                 </div>
 
