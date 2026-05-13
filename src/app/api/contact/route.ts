@@ -12,9 +12,8 @@ export async function POST(req: Request) {
     }
 
     await resend.emails.send({
-      from: "MoFrame Website <noreply@mo-frame.com>",
+      from: "MoFrame <onboarding@resend.dev>",
       to: ["kennyling@mo-frame.com"],
-      replyTo: undefined,
       subject: `New Lead: ${business} — ${plan ?? "General Enquiry"}`,
       html: `
         <div style="font-family: sans-serif; max-width: 600px; margin: 0 auto; padding: 32px; background: #f9f6f3; border-radius: 12px;">
