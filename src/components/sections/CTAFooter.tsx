@@ -1,18 +1,18 @@
 "use client";
 
 import { motion, useInView } from "framer-motion";
-import { useRef, useState } from "react";
+import { useRef, useState, useEffect } from "react";
 import { ArrowRight, CheckCircle, Send, Loader2 } from "lucide-react";
 
 const WA_URL = "https://wa.me/message/OMRIJWN3SVAKM1";
 
 const plans = ["Starter — RM 1,499/mo", "Growth — RM 2,499/mo", "Scale — RM 4,499/mo", "Just exploring"];
 
-// SSM registration number format validator
+// SSM registration number format validator (optional field)
 // Covers: old Sdn Bhd (7-digit + letter), new MyCoID (12-digit), Enterprise (IP prefix), LLP
 function validateSSM(value: string): string {
   const v = value.trim().toUpperCase().replace(/\s/g, "");
-  if (!v) return "SSM registration number is required.";
+  if (!v) return ""; // optional
   const patterns = [
     { re: /^\d{7}-[A-Z0-9]{1,3}$/, label: "Sdn Bhd / Bhd (old format)" },       // 1234567-X
     { re: /^\d{12}$/, label: "MyCoID (new format)" },                              // 202001234567
@@ -46,12 +46,20 @@ export default function CTAFooter() {
   const ref = useRef<HTMLElement>(null);
   const inView = useInView(ref, { once: true, margin: "-80px" });
 
+  const successRef = useRef<HTMLDivElement>(null);
+
   const [form, setForm] = useState({
-    name: "", business: "", ssm: "", countryCode: "+60", phone: "", plan: "", message: "",
+    name: "", business: "", ssm: "", countryCode: "+60", phone: "", plan: "Growth — RM 2,499/mo", message: "",
   });
   const [status, setStatus] = useState<"idle" | "loading" | "success" | "error">("idle");
   const [phoneError, setPhoneError] = useState("");
   const [ssmError, setSsmError] = useState("");
+
+  useEffect(() => {
+    if (status === "success" && successRef.current) {
+      successRef.current.scrollIntoView({ behavior: "smooth", block: "center" });
+    }
+  }, [status]);
 
   const getCountry = (code: string) => countryCodes.find((c) => c.code === code)!;
 
@@ -80,7 +88,7 @@ export default function CTAFooter() {
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     const phoneErr = validatePhone(form.phone, form.countryCode);
-    const ssmErr = validateSSM(form.ssm);
+    const ssmErr = form.ssm.trim() ? validateSSM(form.ssm) : "";
     if (phoneErr) setPhoneError(phoneErr);
     if (ssmErr) setSsmError(ssmErr);
     if (phoneErr || ssmErr) return;
@@ -208,7 +216,7 @@ export default function CTAFooter() {
             className="lg:col-span-3 bg-white/[0.05] border border-white/10 rounded-2xl p-6 sm:p-8 backdrop-blur-sm"
           >
             {status === "success" ? (
-              <div className="flex flex-col items-center justify-center gap-4 py-10 text-center">
+              <div ref={successRef} className="flex flex-col items-center justify-center gap-4 py-10 text-center">
                 <div className="w-16 h-16 rounded-full bg-emerald-500/20 border border-emerald-400/30 flex items-center justify-center">
                   <CheckCircle className="w-8 h-8 text-emerald-400" />
                 </div>
@@ -217,7 +225,7 @@ export default function CTAFooter() {
                   We&apos;ll reach out on WhatsApp within a few hours to arrange your free strategy call.
                 </p>
                 <button
-                  onClick={() => { setStatus("idle"); setSsmError(""); setPhoneError(""); setForm({ name: "", business: "", ssm: "", countryCode: "+60", phone: "", plan: "", message: "" }); }}
+                  onClick={() => { setStatus("idle"); setSsmError(""); setPhoneError(""); setForm({ name: "", business: "", ssm: "", countryCode: "+60", phone: "", plan: "Growth — RM 2,499/mo", message: "" }); }}
                   className="text-xs text-white/30 hover:text-white/60 underline transition-colors mt-2"
                 >
                   Submit another
@@ -236,20 +244,20 @@ export default function CTAFooter() {
                 {/* SSM Registration Number */}
                 <div>
                   <label className="block text-xs font-semibold text-white/50 mb-1.5 uppercase tracking-wide" htmlFor="ssm">
-                    SSM Registration No.
+                    SSM Registration No. <span className="normal-case text-white/25">(optional)</span>
                   </label>
                   <input
                     id="ssm"
                     type="text"
-                    required
                     value={form.ssm}
                     onChange={(e) => {
-                      setForm((f) => ({ ...f, ssm: e.target.value }));
-                      if (ssmError) setSsmError(validateSSM(e.target.value));
+                      const upper = e.target.value.toUpperCase();
+                      setForm((f) => ({ ...f, ssm: upper }));
+                      if (ssmError) setSsmError(validateSSM(upper));
                     }}
                     onBlur={() => setSsmError(validateSSM(form.ssm))}
                     placeholder="e.g. 1234567-X or 202001234567"
-                    className={`w-full bg-white/[0.08] border rounded-lg px-4 py-3 text-white placeholder:text-white/25 text-sm focus:outline-none focus:ring-2 transition-all ${
+                    className={`w-full bg-white/[0.08] border rounded-lg px-4 py-3 text-white placeholder:text-white/25 text-sm focus:outline-none focus:ring-2 transition-all uppercase ${
                       ssmError
                         ? "border-red-400/60 focus:ring-red-400/30"
                         : "border-white/15 focus:ring-white/30 focus:border-white/30"
@@ -257,7 +265,7 @@ export default function CTAFooter() {
                   />
                   {ssmError
                     ? <p className="text-xs text-red-400 mt-1.5">{ssmError}</p>
-                    : <p className="text-xs text-white/25 mt-1.5">Must be a valid SSM-registered business number</p>
+                    : <p className="text-xs text-white/25 mt-1.5">You can provide this later — we&apos;ll verify before onboarding</p>
                   }
                 </div>
 

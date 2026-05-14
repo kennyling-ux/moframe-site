@@ -224,6 +224,12 @@ export default function TermsPage() {
           </Section>
         </main>
       </div>
+
+      <div className="border-t border-[#e5e0da] py-8 px-4 sm:px-6 text-center">
+        <Link href="/" className="inline-flex items-center gap-2 text-sm text-[#787878] hover:text-[#912428] transition-colors">
+          ← Back to mo-frame.com
+        </Link>
+      </div>
     </div>
   );
 }

@@ -82,7 +82,7 @@ export default function FAQ() {
           animate={inView ? { opacity: 1, y: 0 } : {}}
           transition={{ duration: 0.6, delay: 0.2 }}
         >
-          <Accordion className="space-y-3">
+          <Accordion defaultValue={["item-0"]} className="space-y-3">
             {faqs.map((faq, i) => (
               <AccordionItem
                 key={i}

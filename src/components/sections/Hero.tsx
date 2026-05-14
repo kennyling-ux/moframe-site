@@ -99,9 +99,10 @@ export default function Hero() {
             if (!el) return;
             window.scrollTo({ top: el.getBoundingClientRect().top + window.scrollY - 80, behavior: "smooth" });
           }}
-            className="inline-flex items-center gap-2 px-7 py-4 rounded-xl font-bold text-[#212121] text-base bg-white border border-[#e5e0da] hover:border-[#EE2234] hover:bg-[#f9f6f3] transition-all duration-200 w-full sm:w-auto justify-center cursor-pointer"
+            className="inline-flex items-center gap-2 text-[#787878] hover:text-[#212121] font-semibold text-base transition-colors duration-200 w-full sm:w-auto justify-center cursor-pointer"
           >
             See How It Works
+            <ArrowRight className="w-4 h-4" />
           </button>
         </motion.div>
 

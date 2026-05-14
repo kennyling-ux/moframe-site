@@ -10,6 +10,7 @@ import FAQ from "@/components/sections/FAQ";
 import CTAFooter from "@/components/sections/CTAFooter";
 import Footer from "@/components/Footer";
 import WhatsAppButton from "@/components/WhatsAppButton";
+import StickyMobileCTA from "@/components/StickyMobileCTA";
 
 export default function Home() {
   return (
@@ -28,6 +29,7 @@ export default function Home() {
       </main>
       <Footer />
       <WhatsAppButton />
+      <StickyMobileCTA />
     </>
   );
 }

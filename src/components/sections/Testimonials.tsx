@@ -62,7 +62,7 @@ export default function Testimonials() {
           className="text-center mb-14"
         >
           <span className="inline-block px-3 py-1 rounded-full text-xs font-bold uppercase tracking-widest bg-amber-50 text-amber-700 border border-amber-200 mb-4">
-            Client Stories
+            Early Client Stories
           </span>
           <h2 className="text-3xl sm:text-4xl md:text-5xl font-bold tracking-tight text-balance text-[#212121]">
             Real Businesses.{" "}
@@ -110,6 +110,10 @@ export default function Testimonials() {
             </motion.div>
           ))}
         </motion.div>
+
+        <p className="text-center text-xs text-[#BEBEBE] mt-8">
+          * Names and businesses are illustrative of real client outcomes. Specific results may vary.
+        </p>
       </div>
     </section>
   );
