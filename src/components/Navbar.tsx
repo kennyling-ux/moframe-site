@@ -4,6 +4,7 @@ import { useState, useEffect } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import { Menu, X } from "lucide-react";
 import Image from "next/image";
+import Link from "next/link";
 
 const navLinks = [
   { label: "How It Works", href: "#how-it-works" },
@@ -70,6 +71,12 @@ export default function Navbar() {
               {link.label}
             </button>
           ))}
+          <Link
+            href="/about"
+            className="text-sm font-medium text-[#787878] hover:text-[#212121] transition-colors duration-200"
+          >
+            About
+          </Link>
           <a
             href={WA_URL}
             target="_blank"
@@ -110,6 +117,13 @@ export default function Navbar() {
                   {link.label}
                 </button>
               ))}
+              <Link
+                href="/about"
+                onClick={() => setOpen(false)}
+                className="text-left text-sm font-medium text-[#787878] hover:text-[#212121] py-2 transition-colors"
+              >
+                About
+              </Link>
               <a
                 href={WA_URL}
                 target="_blank"
