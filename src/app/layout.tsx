@@ -2,7 +2,7 @@ import type { Metadata } from "next";
 import Script from "next/script";
 import "./globals.css";
 
-const GA_ID = "G-5D4WC739PS";
+const GA_ID = "G-9F1L2KV4M1";
 
 const siteUrl = "https://mo-frame.com";
 const siteName = "MoFrame";
