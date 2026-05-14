@@ -43,13 +43,12 @@ export default function Comparison() {
           initial={{ opacity: 0, y: 24 }}
           animate={inView ? { opacity: 1, y: 0 } : {}}
           transition={{ duration: 0.6, delay: 0.2 }}
-          className="overflow-x-auto rounded-2xl border border-[#e5e0da] shadow-lg"
+          className="rounded-2xl border border-[#e5e0da] shadow-lg overflow-hidden"
         >
-          <div className="min-w-[560px]">
           {/* Header */}
-          <div className="grid grid-cols-3 bg-[#212121] text-white">
+          <div className="grid grid-cols-2 sm:grid-cols-3 bg-[#212121] text-white">
             <div className="px-4 sm:px-6 py-4 text-sm font-semibold text-white/60">What you get</div>
-            <div className="px-4 sm:px-6 py-4 text-sm font-bold text-red-400 border-l border-white/10">
+            <div className="hidden sm:block px-4 sm:px-6 py-4 text-sm font-bold text-red-400 border-l border-white/10">
               Typical Agency
             </div>
             <div className="px-4 sm:px-6 py-4 text-sm font-bold text-emerald-400 border-l border-white/10">
@@ -64,12 +63,12 @@ export default function Comparison() {
               initial={{ opacity: 0, x: -16 }}
               animate={inView ? { opacity: 1, x: 0 } : {}}
               transition={{ delay: 0.3 + i * 0.04, duration: 0.4 }}
-              className={`grid grid-cols-3 border-b border-[#e5e0da] last:border-0 transition-colors hover:bg-[#f9f6f3] ${
+              className={`grid grid-cols-2 sm:grid-cols-3 border-b border-[#e5e0da] last:border-0 transition-colors hover:bg-[#f9f6f3] ${
                 i % 2 === 0 ? "bg-white" : "bg-[#faf8f5]"
               }`}
             >
               <div className="px-4 sm:px-6 py-4 text-sm font-medium text-[#212121]">{row.label}</div>
-              <div className="px-4 sm:px-6 py-4 text-sm text-red-500 border-l border-[#e5e0da] flex items-start gap-2">
+              <div className="hidden sm:flex px-4 sm:px-6 py-4 text-sm text-red-500 border-l border-[#e5e0da] items-start gap-2">
                 <X className="w-4 h-4 mt-0.5 shrink-0 text-red-400" />
                 <span>{row.them}</span>
               </div>
@@ -79,7 +78,6 @@ export default function Comparison() {
               </div>
             </motion.div>
           ))}
-          </div>
         </motion.div>
       </div>
     </section>
