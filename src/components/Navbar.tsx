@@ -72,6 +72,12 @@ export default function Navbar() {
             </button>
           ))}
           <Link
+            href="/work/unbound-folk"
+            className="text-sm font-medium text-[#787878] hover:text-[#212121] transition-colors duration-200"
+          >
+            Our Work
+          </Link>
+          <Link
             href="/about"
             className="text-sm font-medium text-[#787878] hover:text-[#212121] transition-colors duration-200"
           >
@@ -117,6 +123,13 @@ export default function Navbar() {
                   {link.label}
                 </button>
               ))}
+              <Link
+                href="/work/unbound-folk"
+                onClick={() => setOpen(false)}
+                className="text-left text-sm font-medium text-[#787878] hover:text-[#212121] py-2 transition-colors"
+              >
+                Our Work
+              </Link>
               <Link
                 href="/about"
                 onClick={() => setOpen(false)}
